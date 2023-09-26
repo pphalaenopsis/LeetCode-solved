@@ -1,0 +1,23 @@
+typedef struct node_s node_t;
+struct node_s
+{
+    int val;
+    node_t *left;
+    node_t *right;
+};
+
+int maxDepth(node_t *root)
+{
+    // empty
+    if (root == NULL)
+        return 0;
+
+    int l, r;
+    l = maxDepth(root->left);
+    r = maxDepth(root->right);
+
+    if (l > r)
+        return l + 1;
+    else
+        return r + 1;
+}
